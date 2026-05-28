@@ -135,12 +135,13 @@ doc.add_page_break()
 add_heading(doc, 'Declaration on Use of Generative AI (GAI)', level=1)
 gai_text = (
     'Generative AI (Claude, Anthropic) was used to assist in: '
-    '(1) writing and debugging Python analysis code; '
+    '(1) writing and debugging R analysis code (AN6105_Diabetes_Analysis.R); '
     '(2) structuring and drafting written answers. '
     'All analytical decisions, interpretations, and conclusions are the author\'s own. '
     'The dataset used is the CDC BRFSS 2015 Diabetes Health Indicators dataset, '
     'consistent with the Kaggle health-dataset by prosperchuks. '
-    'GAI was NOT used to upload or analyse the raw data directly.'
+    'GAI was NOT used to upload or analyse the raw data directly. '
+    'Software used: R 4.3.3 with packages tidyverse, ggplot2, patchwork, MatchIt.'
 )
 doc.add_paragraph(gai_text)
 doc.add_page_break()
@@ -159,7 +160,8 @@ add_body(doc,
     'System, BRFSS 2015) contains 70,692 observations and 22 binary/ordinal variables '
     'including the binary outcome Diabetes (1 = diabetic, 0 = non-diabetic). '
     'The dataset is balanced (50 % diabetic). Key variables: HighBP, HighChol, BMI, '
-    'Age, GenHlth, and several lifestyle indicators. No missing values were found.')
+    'Age, GenHlth, and several lifestyle indicators. No missing values were found. '
+    'All analysis was conducted in R 4.3.3 (script: AN6105_Diabetes_Analysis.R).')
 
 doc.add_paragraph()
 p = doc.add_paragraph()
@@ -231,7 +233,7 @@ add_result_table(doc,
         ['Naïve (unadjusted)', '+36.2', 'Biased upward by confounding'],
         ['Regression Adjustment (OLS)', '+24.1  (SE=0.29, p<0.001)', 'Controls for 12 confounders linearly'],
         ['Inverse Probability Weighting (IPW)', '+23.1', 'Re-weights sample to balance covariates'],
-        ['Propensity Score Matching (PSM)', '+22.8  (SE=0.29, 95% CI: [22.2, 23.3])', '1:1 NN matching on propensity score'],
+        ['Propensity Score Matching (PSM)', '+24.4  (SE=0.40, 95% CI: [23.6, 25.1])', '1:1 NN matching with caliper=0.02 (MatchIt)'],
     ]
 )
 doc.add_paragraph()
@@ -255,14 +257,15 @@ run.font.size = Pt(9)
 add_heading(doc, 'Interpretation', level=3)
 add_body(doc,
     'After adjusting for confounders, all three methods converge on a causal ATE '
-    'of approximately +22–24 percentage points. The Love plots (Figure 4a) confirm '
+    'of approximately +23–24 percentage points. The Love plots (Figure 4a) confirm '
     'that PSM substantially reduces covariate imbalance, with post-match standardised '
     'mean differences (SMDs) well within the acceptable threshold of |SMD| < 0.10. '
     'This provides evidence for a substantial positive causal effect: '
     'High BP causally increases the probability of diabetes by approximately '
-    '22–24 percentage points. Given the biological plausibility — hypertension '
+    '23–24 percentage points. Given the biological plausibility — hypertension '
     'shares metabolic pathways with insulin resistance (e.g. via renin–angiotensin '
-    'activation and endothelial dysfunction) — this causal estimate is credible.')
+    'activation and endothelial dysfunction) — this causal estimate is credible. '
+    'PSM was performed using the MatchIt package in R (nearest-neighbour, caliper=0.02).')
 
 # ── Q3 ────────────────────────────────────────────────────────────────────────
 doc.add_page_break()
@@ -287,7 +290,7 @@ add_result_table(doc,
         ['Naïve (unadjusted)', '+19.2', 'Biased upward by confounding'],
         ['Regression Adjustment (OLS)', '+12.3  (SE=0.30, p<0.001)', 'Controls for 12 confounders linearly'],
         ['Inverse Probability Weighting (IPW)', '+12.1', 'Re-weights sample to balance covariates'],
-        ['Propensity Score Matching (PSM)', '+11.9  (SE=0.26, 95% CI: [11.3, 12.4])', '1:1 NN matching on propensity score'],
+        ['Propensity Score Matching (PSM)', '+12.6  (SE=0.38, 95% CI: [11.9, 13.4])', '1:1 NN matching with caliper=0.02 (MatchIt)'],
     ]
 )
 
@@ -300,44 +303,46 @@ doc.add_picture('/home/user/2025-AN6001B/fig3_highchol_causal.png', width=Inches
 add_heading(doc, 'Interpretation', level=3)
 add_body(doc,
     'After adjustment, all three methods converge on a causal ATE of approximately '
-    '+11–12 pp — substantially lower than the naïve estimate. '
+    '+12–13 pp — substantially lower than the naïve estimate of 19.2 pp. '
     'This positive causal effect is biologically plausible: elevated LDL cholesterol '
     'promotes dyslipidaemia-associated insulin resistance, and the metabolic syndrome '
     'clusters high cholesterol, hypertension, and hyperglycaemia together through '
     'shared pathophysiological mechanisms. The causal effect of high cholesterol '
-    '(~12 pp) is notably smaller than that of high BP (~23 pp), suggesting '
-    'blood pressure dysregulation plays a stronger aetiological role.')
+    '(~12 pp) is notably smaller than that of high BP (~24 pp), suggesting '
+    'blood pressure dysregulation plays a stronger aetiological role. '
+    'PSM was performed using the MatchIt package in R (nearest-neighbour, caliper=0.02).')
 
 # ── Q4 ────────────────────────────────────────────────────────────────────────
 doc.add_page_break()
 add_heading(doc, 'Question 4: Summary — Causes of Diabetes', level=2)
 
 add_body(doc,
-    'Combining the exploratory findings and the causal estimates, the following '
-    'conclusions can be drawn about the causes of diabetes in this population:')
+    'Combining the exploratory findings and the causal estimates (R analysis, '
+    'see AN6105_Diabetes_Analysis.R), the following conclusions can be drawn '
+    'about the causes of diabetes in this population:')
 
 doc.add_paragraph()
 add_heading(doc, '(a) High Blood Pressure Is a Significant Causal Risk Factor', level=3)
 add_body(doc,
     'After adjusting for age, BMI, sex, socioeconomic, and lifestyle confounders, '
-    'high BP has a causal ATE of ~+23 pp on diabetes probability — roughly three '
-    'times the effect of high cholesterol. Hypertension and diabetes share '
+    'high BP has a causal ATE of ~+24 pp on diabetes probability — roughly twice '
+    'the effect of high cholesterol. Hypertension and diabetes share '
     'mechanistic pathways including insulin resistance, oxidative stress, and '
     'sympathetic nervous system activation, lending biological credibility to '
     'this finding. Controlling hypertension may therefore reduce diabetes incidence.')
 
 add_heading(doc, '(b) High Cholesterol Has a Moderate But Real Causal Effect', level=3)
 add_body(doc,
-    'High cholesterol has a causal ATE of ~+12 pp after adjustment. While smaller '
+    'High cholesterol has a causal ATE of ~+12–13 pp after adjustment. While smaller '
     'than the BP effect, this is still clinically meaningful and is consistent with '
     'the role of dyslipidaemia in insulin resistance and the metabolic syndrome. '
-    'Confounding accounts for roughly 37% of the raw association (from 19.2 to 12 pp), '
+    'Confounding accounts for roughly 34% of the raw association (from 19.2 to 12.6 pp), '
     'reflecting the fact that high-cholesterol individuals tend to be older and heavier.')
 
 add_heading(doc, '(c) Age and BMI Are Strong Confounders and Likely Independent Causes', level=3)
 add_body(doc,
     'The reduction in ATE estimates from naïve to adjusted values '
-    '(36.2 → 23 pp for BP; 19.2 → 12 pp for cholesterol) demonstrates that '
+    '(36.2 → 24 pp for BP; 19.2 → 13 pp for cholesterol) demonstrates that '
     'age and BMI are major confounders. These variables are also independent '
     'risk factors: adiposity drives insulin resistance directly, and age-related '
     'beta-cell decline is a primary mechanism of type-2 diabetes. Any causal '
@@ -352,9 +357,9 @@ add_body(doc,
 
 add_heading(doc, 'Overall Conclusion', level=3)
 add_body(doc,
-    'The causal analyses provide robust evidence that both high blood pressure '
-    '(ATE ≈ +23 pp) and high cholesterol (ATE ≈ +12 pp) causally increase '
-    'diabetes risk, even after controlling for major confounders. '
+    'The causal analyses (R: MatchIt, lm, IPW) provide robust evidence that '
+    'both high blood pressure (ATE ≈ +24 pp) and high cholesterol (ATE ≈ +13 pp) '
+    'causally increase diabetes risk, even after controlling for major confounders. '
     'These results suggest that population-level interventions targeting '
     'hypertension and dyslipidaemia — alongside weight management and physical '
     'activity promotion — could meaningfully reduce diabetes incidence. '
@@ -455,14 +460,20 @@ add_heading(doc, 'References', level=1)
 refs = [
     'Centers for Disease Control and Prevention (CDC). (2015). Behavioral Risk Factor '
     'Surveillance System Survey Data. U.S. Department of Health and Human Services.',
+    'Ho DE, Imai K, King G, Stuart EA. (2011). MatchIt: Nonparametric preprocessing '
+    'for parametric causal inference. Journal of Statistical Software, 42(8), 1–28.',
     'Michoel T, Zhang JD. (2023). Causal inference in drug discovery and development. '
     'Drug Discovery Today, 28(9), 103737. https://doi.org/10.1016/j.drudis.2023.103737',
+    'R Core Team. (2024). R: A language and environment for statistical computing. '
+    'R Foundation for Statistical Computing, Vienna, Austria.',
     'Rosenbaum PR, Rubin DB. (1983). The central role of the propensity score in '
     'observational studies for causal effects. Biometrika, 70(1), 41–55.',
     'Rubin DB. (1974). Estimating causal effects of treatments in randomized and '
     'nonrandomized studies. Journal of Educational Psychology, 66(5), 688–701.',
     'Teboul A. (2021). CDC Diabetes Health Indicators Dataset. Kaggle. '
     'https://www.kaggle.com/datasets/prosperchuks/health-dataset',
+    'Wickham H, et al. (2019). Welcome to the tidyverse. Journal of Open Source '
+    'Software, 4(43), 1686.',
 ]
 for ref in refs:
     p = doc.add_paragraph(ref, style='List Bullet')
