@@ -273,6 +273,11 @@ cat("\nFig 1 saved: fig1_eda.png\n")
 # Confounders for both analyses:
 # Variables that plausibly affect BOTH the treatment (HighBP/HighChol) AND
 # the outcome (Diabetes) — selected based on causal DAG reasoning.
+#
+# IMPORTANT: Education and Income are included as socioeconomic confounders.
+# If you previously removed them to fix a "object not found" error, that issue
+# is now resolved by the column-normalisation block above (Section 1).
+# Do NOT remove Education or Income — omitting them biases the causal estimates.
 confounders <- c("Age","BMI","Sex","Education","Income",
                  "Smoker","PhysActivity","Fruits","Veggies",
                  "HvyAlcoholConsump","HeartDiseaseorAttack","GenHlth")

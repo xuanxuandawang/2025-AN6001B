@@ -175,18 +175,18 @@ add_heading(doc, 'Finding 1: Cardiovascular and Metabolic Risk Factors Are Marke
             'More Prevalent among Diabetics', level=3)
 add_body(doc,
     'As shown in Figure 1(b), the prevalence of High Blood Pressure (HighBP) is '
-    '68.3 % among diabetics vs. 32.0 % among non-diabetics — a 2.1× difference. '
-    'High Cholesterol (HighChol) is 61.9 % vs. 42.7 %, heart disease / heart attack '
-    'is 24.9 % vs. 7.1 %, and difficulty walking (DiffWalk) is 37.8 % vs. 11.8 %. '
-    'In contrast, physical activity (PhysActivity) is lower in diabetics (59.6 % vs. '
-    '76.9 %). These patterns suggest that diabetes co-occurs with a cluster of '
+    '75.3 % among diabetics vs. 37.4 % among non-diabetics — a 2.0× difference. '
+    'High Cholesterol (HighChol) is 67.0 % vs. 38.1 %, heart disease / heart attack '
+    'is 22.3 % vs. 7.3 %, and difficulty walking (DiffWalk) is 37.1 % vs. 13.4 %. '
+    'In contrast, physical activity (PhysActivity) is lower in diabetics (63.1 % vs. '
+    '77.6 %). These patterns suggest that diabetes co-occurs with a cluster of '
     'cardiovascular risk factors, and that physical inactivity is a likely contributor.')
 
 # Finding 2
 add_heading(doc, 'Finding 2: BMI Distribution Is Shifted Upward for Diabetics', level=3)
 add_body(doc,
-    'Figure 1(c) shows that the mean BMI of diabetics is 31.5 vs. 26.5 for '
-    'non-diabetics — a clinically important 5-unit difference. The diabetic '
+    'Figure 1(c) shows that the mean BMI of diabetics is 31.9 vs. 27.8 for '
+    'non-diabetics — a clinically important 4.1-unit difference. The diabetic '
     'BMI distribution is shifted into the obese range (BMI ≥ 30), whereas the '
     'non-diabetic distribution peaks in the overweight range (25–29.9). This is '
     'consistent with adiposity being a strong risk factor for insulin resistance. '
@@ -218,10 +218,10 @@ add_body(doc,
 
 add_heading(doc, 'Unadjusted (Naïve) Association', level=3)
 add_body(doc,
-    'Without adjustment, the diabetes rate is 68.1 % among those with high BP vs. '
-    '31.8 % without — a raw difference of 36.2 percentage points (pp). '
+    'Without adjustment, the diabetes rate is 66.8 % among those with high BP vs. '
+    '28.3 % without — a raw difference of 38.5 percentage points (pp). '
     'A chi-square test confirms this association is highly significant '
-    '(χ² = 9,270.7, p < 0.001), with a crude odds ratio of 4.56. However, this '
+    '(p < 0.001), with a crude odds ratio of 5.09. However, this '
     'naïve estimate is inflated by confounding (e.g. older, heavier individuals '
     'are more likely to have both high BP and diabetes).')
 
@@ -230,10 +230,10 @@ add_heading(doc, 'Causal Methods and Results', level=3)
 add_result_table(doc,
     ['Method', 'ATE (pp)', 'Interpretation'],
     [
-        ['Naïve (unadjusted)', '+36.2', 'Biased upward by confounding'],
-        ['Regression Adjustment (OLS)', '+24.1  (SE=0.29, p<0.001)', 'Controls for 12 confounders linearly'],
-        ['Inverse Probability Weighting (IPW)', '+23.1', 'Re-weights sample to balance covariates'],
-        ['Propensity Score Matching (PSM)', '+24.4  (SE=0.40, 95% CI: [23.6, 25.1])', '1:1 NN matching with caliper=0.02 (MatchIt)'],
+        ['Naïve (unadjusted)', '+38.5', 'Biased upward by confounding'],
+        ['Regression Adjustment (OLS)', '+18.6  (SE=0.36, p<0.001)', 'Controls for 10 confounders linearly'],
+        ['Inverse Probability Weighting (IPW)', '+14.7', 'Re-weights sample to balance covariates'],
+        ['Propensity Score Matching (PSM)', '+14.4  (SE=0.48, 95% CI: [13.5, 15.4])', '1:1 NN matching with caliper=0.02 (MatchIt)'],
     ]
 )
 doc.add_paragraph()
@@ -256,13 +256,15 @@ run.font.size = Pt(9)
 
 add_heading(doc, 'Interpretation', level=3)
 add_body(doc,
-    'After adjusting for confounders, all three methods converge on a causal ATE '
-    'of approximately +23–24 percentage points. The Love plots (Figure 4a) confirm '
-    'that PSM substantially reduces covariate imbalance, with post-match standardised '
-    'mean differences (SMDs) well within the acceptable threshold of |SMD| < 0.10. '
-    'This provides evidence for a substantial positive causal effect: '
+    'After adjusting for confounders, the naïve estimate of +38.5 pp is substantially '
+    'reduced. The IPW (+14.7 pp) and PSM (+14.4 pp) estimates agree closely, providing '
+    'mutual validation. The OLS estimate (+18.6 pp) is somewhat higher, likely reflecting '
+    'residual linearity assumptions. The preferred causal estimate is therefore '
+    'approximately +14–15 pp. The Love plots (Figure 4a) confirm that PSM substantially '
+    'reduces covariate imbalance, with post-match SMDs close to the |SMD| < 0.10 '
+    'threshold. This provides evidence for a substantial positive causal effect: '
     'High BP causally increases the probability of diabetes by approximately '
-    '23–24 percentage points. Given the biological plausibility — hypertension '
+    '14–15 percentage points. Given the biological plausibility — hypertension '
     'shares metabolic pathways with insulin resistance (e.g. via renin–angiotensin '
     'activation and endothelial dysfunction) — this causal estimate is credible. '
     'PSM was performed using the MatchIt package in R (nearest-neighbour, caliper=0.02).')
@@ -278,8 +280,8 @@ add_body(doc,
 
 add_heading(doc, 'Unadjusted (Naïve) Association', level=3)
 add_body(doc,
-    'Without adjustment, the diabetes rate is 59.2 % for those with high cholesterol '
-    'vs. 40.0 % without — a raw difference of 19.2 pp (crude OR = 2.18, χ² = 2,596.6, '
+    'Without adjustment, the diabetes rate is 63.7 % for those with high cholesterol '
+    'vs. 34.8 % without — a raw difference of 29.0 pp (crude OR = 3.30, '
     'p < 0.001). Again, this is upwardly biased by shared confounders.')
 
 add_heading(doc, 'Causal Methods and Results', level=3)
@@ -287,10 +289,10 @@ add_heading(doc, 'Causal Methods and Results', level=3)
 add_result_table(doc,
     ['Method', 'ATE (pp)', 'Interpretation'],
     [
-        ['Naïve (unadjusted)', '+19.2', 'Biased upward by confounding'],
-        ['Regression Adjustment (OLS)', '+12.3  (SE=0.30, p<0.001)', 'Controls for 12 confounders linearly'],
-        ['Inverse Probability Weighting (IPW)', '+12.1', 'Re-weights sample to balance covariates'],
-        ['Propensity Score Matching (PSM)', '+12.6  (SE=0.38, 95% CI: [11.9, 13.4])', '1:1 NN matching with caliper=0.02 (MatchIt)'],
+        ['Naïve (unadjusted)', '+29.0', 'Biased upward by confounding'],
+        ['Regression Adjustment (OLS)', '+13.9  (SE=0.34, p<0.001)', 'Controls for 10 confounders linearly'],
+        ['Inverse Probability Weighting (IPW)', '+13.0', 'Re-weights sample to balance covariates'],
+        ['Propensity Score Matching (PSM)', '+11.8  (SE=0.45, 95% CI: [10.9, 12.6])', '1:1 NN matching with caliper=0.02 (MatchIt)'],
     ]
 )
 
@@ -303,13 +305,15 @@ doc.add_picture('/home/user/2025-AN6001B/fig3_highchol_causal.png', width=Inches
 add_heading(doc, 'Interpretation', level=3)
 add_body(doc,
     'After adjustment, all three methods converge on a causal ATE of approximately '
-    '+12–13 pp — substantially lower than the naïve estimate of 19.2 pp. '
-    'This positive causal effect is biologically plausible: elevated LDL cholesterol '
-    'promotes dyslipidaemia-associated insulin resistance, and the metabolic syndrome '
-    'clusters high cholesterol, hypertension, and hyperglycaemia together through '
-    'shared pathophysiological mechanisms. The causal effect of high cholesterol '
-    '(~12 pp) is notably smaller than that of high BP (~24 pp), suggesting '
-    'blood pressure dysregulation plays a stronger aetiological role. '
+    '+12–14 pp — substantially lower than the naïve estimate of 29.0 pp. '
+    'Confounding accounts for more than half the raw association (29.0 → ~12 pp), '
+    'reflecting the fact that high-cholesterol individuals tend to be older, heavier, '
+    'and less physically active. The IPW (+13.0 pp) and PSM (+11.8 pp) estimates '
+    'agree closely and are the preferred estimates. This positive causal effect is '
+    'biologically plausible: elevated LDL cholesterol promotes dyslipidaemia-associated '
+    'insulin resistance through shared metabolic syndrome pathways. The causal effect '
+    'of high cholesterol (~12 pp) is smaller than that of high BP (~14 pp), suggesting '
+    'blood pressure dysregulation plays a somewhat stronger aetiological role. '
     'PSM was performed using the MatchIt package in R (nearest-neighbour, caliper=0.02).')
 
 # ── Q4 ────────────────────────────────────────────────────────────────────────
@@ -324,29 +328,33 @@ add_body(doc,
 doc.add_paragraph()
 add_heading(doc, '(a) High Blood Pressure Is a Significant Causal Risk Factor', level=3)
 add_body(doc,
-    'After adjusting for age, BMI, sex, socioeconomic, and lifestyle confounders, '
-    'high BP has a causal ATE of ~+24 pp on diabetes probability — roughly twice '
-    'the effect of high cholesterol. Hypertension and diabetes share '
-    'mechanistic pathways including insulin resistance, oxidative stress, and '
-    'sympathetic nervous system activation, lending biological credibility to '
-    'this finding. Controlling hypertension may therefore reduce diabetes incidence.')
+    'After adjusting for age, BMI, sex, and lifestyle confounders, '
+    'high BP has a causal ATE of ~+14–15 pp on diabetes probability — the largest '
+    'single risk factor examined. The naïve estimate of 38.5 pp was inflated by '
+    'confounding; after adjustment via IPW and PSM the estimate stabilises at ~14 pp. '
+    'Hypertension and diabetes share mechanistic pathways including insulin resistance, '
+    'oxidative stress, and sympathetic nervous system activation, lending biological '
+    'credibility to this finding. Controlling hypertension may therefore reduce '
+    'diabetes incidence.')
 
 add_heading(doc, '(b) High Cholesterol Has a Moderate But Real Causal Effect', level=3)
 add_body(doc,
-    'High cholesterol has a causal ATE of ~+12–13 pp after adjustment. While smaller '
-    'than the BP effect, this is still clinically meaningful and is consistent with '
-    'the role of dyslipidaemia in insulin resistance and the metabolic syndrome. '
-    'Confounding accounts for roughly 34% of the raw association (from 19.2 to 12.6 pp), '
-    'reflecting the fact that high-cholesterol individuals tend to be older and heavier.')
+    'High cholesterol has a causal ATE of ~+12 pp after adjustment (IPW: 13.0 pp, '
+    'PSM: 11.8 pp). While slightly smaller than the BP effect, this is clinically '
+    'meaningful. Notably, confounding explains more than half the raw association '
+    '(naïve: 29.0 pp → adjusted: ~12 pp), indicating that the cholesterol–diabetes '
+    'link is heavily confounded by age, BMI, and general health status.')
 
 add_heading(doc, '(c) Age and BMI Are Strong Confounders and Likely Independent Causes', level=3)
 add_body(doc,
     'The reduction in ATE estimates from naïve to adjusted values '
-    '(36.2 → 24 pp for BP; 19.2 → 13 pp for cholesterol) demonstrates that '
-    'age and BMI are major confounders. These variables are also independent '
-    'risk factors: adiposity drives insulin resistance directly, and age-related '
-    'beta-cell decline is a primary mechanism of type-2 diabetes. Any causal '
-    'model of diabetes must account for these upstream determinants.')
+    '(38.5 → 14 pp for BP; 29.0 → 12 pp for cholesterol) demonstrates that '
+    'age and BMI are major confounders — and likely independent causal risk factors '
+    'in their own right. Adiposity drives insulin resistance directly, and age-related '
+    'beta-cell decline is a primary mechanism of type-2 diabetes. '
+    'The correlation matrix (Figure 1e) confirms that BMI (r=0.29), Age (r=0.28), '
+    'and GenHlth (r=0.41) all have stronger marginal correlations with diabetes than '
+    'either HighBP (r=0.38) or HighChol (r=0.29).')
 
 add_heading(doc, '(d) Physical Inactivity Is Associated with Diabetes', level=3)
 add_body(doc,
@@ -358,14 +366,16 @@ add_body(doc,
 add_heading(doc, 'Overall Conclusion', level=3)
 add_body(doc,
     'The causal analyses (R: MatchIt, lm, IPW) provide robust evidence that '
-    'both high blood pressure (ATE ≈ +24 pp) and high cholesterol (ATE ≈ +13 pp) '
-    'causally increase diabetes risk, even after controlling for major confounders. '
-    'These results suggest that population-level interventions targeting '
-    'hypertension and dyslipidaemia — alongside weight management and physical '
-    'activity promotion — could meaningfully reduce diabetes incidence. '
-    'The consistency of estimates across three methodologically distinct '
-    'causal inference approaches (regression adjustment, IPW, PSM) '
-    'strengthens the credibility of these conclusions.')
+    'both high blood pressure (IPW/PSM ATE ≈ +14–15 pp) and high cholesterol '
+    '(IPW/PSM ATE ≈ +12 pp) causally increase diabetes risk, even after controlling '
+    'for age, BMI, sex, and lifestyle confounders. The large reduction from naïve to '
+    'adjusted estimates (38.5 → 14 pp for BP; 29.0 → 12 pp for cholesterol) highlights '
+    'the critical importance of causal adjustment — raw associations substantially '
+    'overstate the direct causal effects. Population-level interventions targeting '
+    'hypertension and dyslipidaemia, alongside BMI reduction and physical activity '
+    'promotion, could meaningfully reduce diabetes incidence. The close agreement '
+    'between IPW and PSM estimates for both treatments strengthens the credibility '
+    'of these conclusions.')
 
 # ════════════════════════════════════════════════════════════════════════════
 # PART B
