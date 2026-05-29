@@ -27,6 +27,99 @@ set.seed(42)
 # or update the path below.
 df <- read.csv("diabetes_data.csv")
 
+cat("Raw column names detected:\n")
+print(names(df))
+
+# ── Normalise column names ────────────────────────────────────────────────────
+# The Kaggle dataset may ship with different capitalisations or a
+# 'Diabetes_binary' / 'Diabetes_012' target column depending on the file
+# downloaded. This block maps every known variant to the expected names.
+
+# (a) Standardise ALL names to Title-Case first
+names(df) <- tools::toTitleCase(tolower(names(df)))
+
+# (b) Common variant → canonical name mapping
+col_aliases <- list(
+  Diabetes           = c("Diabetes_Binary","Diabetes_012","Diabetesbinary",
+                         "Diabetes012","Diabetestype"),
+  Highbp             = c("High_Bp","Highbloodpressure","High_Blood_Pressure"),
+  Highchol           = c("High_Chol","Highcholesterol","High_Cholesterol"),
+  Cholcheck          = c("Chol_Check","Cholesterol_Check"),
+  Physicallactivity  = c("Physactivity","Phys_Activity","Physical_Activity"),
+  Hvyalcoholconsump  = c("Hvyalcohol","Heavy_Alcohol","Heavyalcohol"),
+  Anyhealthcare      = c("Any_Healthcare","Anyhealthcoverage"),
+  Nodocbccost        = c("Nodoc_Bc_Cost","No_Doc_Bc_Cost","Nodoccost"),
+  Heartdiseaseorattack = c("Heart_Disease_Or_Attack","Heartdisease","Heartdiseaseattack"),
+  Genhlth            = c("Gen_Hlth","General_Health","Generalhealth"),
+  Menthlth           = c("Ment_Hlth","Mental_Health"),
+  Physhlth           = c("Phys_Hlth","Physical_Health"),
+  Diffwalk           = c("Diff_Walk","Difficulty_Walking")
+)
+for (canonical in names(col_aliases)) {
+  for (alias in col_aliases[[canonical]]) {
+    if (alias %in% names(df) && !canonical %in% names(df)) {
+      names(df)[names(df) == alias] <- canonical
+    }
+  }
+}
+
+# (c) Rename Title-Case back to the names used throughout this script
+name_map <- c(
+  Diabetes             = "Diabetes",
+  Highbp               = "HighBP",
+  Highchol             = "HighChol",
+  Cholcheck            = "CholCheck",
+  Bmi                  = "BMI",
+  Smoker               = "Smoker",
+  Stroke               = "Stroke",
+  Heartdiseaseorattack = "HeartDiseaseorAttack",
+  Physactivity         = "PhysActivity",
+  Physicallactivity    = "PhysActivity",
+  Fruits               = "Fruits",
+  Veggies              = "Veggies",
+  Hvyalcoholconsump    = "HvyAlcoholConsump",
+  Anyhealthcare        = "AnyHealthcare",
+  Nodocbccost          = "NoDocbcCost",
+  Genhlth              = "GenHlth",
+  Menthlth             = "MentHlth",
+  Physhlth             = "PhysHlth",
+  Diffwalk             = "DiffWalk",
+  Sex                  = "Sex",
+  Age                  = "Age",
+  Education            = "Education",
+  Income               = "Income"
+)
+for (old in names(name_map)) {
+  new <- name_map[[old]]
+  if (old %in% names(df) && old != new) {
+    names(df)[names(df) == old] <- new
+  }
+}
+
+cat("\nNormalised column names:\n")
+print(names(df))
+
+# (d) If Diabetes has 3 levels (0/1/2), collapse: 0 = no diabetes, 1+2 = diabetes
+if ("Diabetes" %in% names(df)) {
+  vals <- sort(unique(df$Diabetes))
+  if (length(vals) == 3 && all(vals == c(0,1,2))) {
+    cat("\nNote: Diabetes column has 3 levels (0/1/2). Collapsing 1+2 → 1 (diabetic).\n")
+    df$Diabetes <- ifelse(df$Diabetes == 0, 0, 1)
+  }
+}
+
+# (e) Verify all required columns are present
+required_cols <- c("Diabetes","HighBP","HighChol","BMI","Age","Sex",
+                   "Education","Income","Smoker","PhysActivity",
+                   "Fruits","Veggies","HvyAlcoholConsump",
+                   "HeartDiseaseorAttack","GenHlth")
+missing_cols <- setdiff(required_cols, names(df))
+if (length(missing_cols) > 0) {
+  stop(paste("Missing columns after normalisation:", paste(missing_cols, collapse=", "),
+             "\nPlease check your CSV file."))
+}
+cat("\nAll required columns found. Proceeding with analysis.\n")
+
 # Variable labels (for readable plots)
 age_labels <- c("18-24","25-29","30-34","35-39","40-44","45-49",
                 "50-54","55-59","60-64","65-69","70-74","75-79","80+")
