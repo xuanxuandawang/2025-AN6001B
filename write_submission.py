@@ -212,9 +212,11 @@ add_body(doc,
     'To estimate the causal effect of High Blood Pressure (HighBP = 1 vs. 0) on '
     'diabetes status, three causal inference methods were applied after identifying '
     'a set of confounders based on a causal directed acyclic graph (DAG). '
-    'The confounders adjusted for are: Age, BMI, Sex, Education, Income, Smoker, '
-    'PhysActivity, Fruits, Veggies, HvyAlcoholConsump, HeartDiseaseorAttack, and '
-    'GenHlth — variables that plausibly affect both blood pressure and diabetes risk.')
+    'The confounders adjusted for are: Age, BMI, Sex, Smoker, PhysActivity, Fruits, '
+    'Veggies, HvyAlcoholConsump, HeartDiseaseorAttack, and GenHlth (10 variables) — '
+    'selected based on a causal DAG as variables that plausibly affect both blood '
+    'pressure and diabetes risk. Note: Education and Income are absent from this '
+    'dataset version.')
 
 add_heading(doc, 'Unadjusted (Naïve) Association', level=3)
 add_body(doc,
@@ -276,7 +278,7 @@ add_heading(doc, 'Question 3: Causal Effect of High Cholesterol on Diabetes', le
 add_body(doc,
     'The same three methods were applied to estimate the causal effect of High '
     'Cholesterol (HighChol = 1 vs. 0) on diabetes, controlling for the same '
-    'set of 12 confounders.')
+    'set of 10 confounders.')
 
 add_heading(doc, 'Unadjusted (Naïve) Association', level=3)
 add_body(doc,
@@ -328,7 +330,7 @@ add_body(doc,
 doc.add_paragraph()
 add_heading(doc, '(a) High Blood Pressure Is a Significant Causal Risk Factor', level=3)
 add_body(doc,
-    'After adjusting for age, BMI, sex, and lifestyle confounders, '
+    'After adjusting for age, BMI, sex, and 7 lifestyle/health confounders, '
     'high BP has a causal ATE of ~+14–15 pp on diabetes probability — the largest '
     'single risk factor examined. The naïve estimate of 38.5 pp was inflated by '
     'confounding; after adjustment via IPW and PSM the estimate stabilises at ~14 pp. '
