@@ -1,7 +1,128 @@
 # 面试准备手册 · 董文轩
 ## 汇丰银行（HSBC）金融数据分析实习生
 
-> 生成时间：2026-05-29 | 模式：深研版（含 Case Study 专项）
+> 生成时间：2026-05-29 | 更新：2026-05-29（补充真实面经 + 第零章招聘流程全解）
+
+---
+
+## 第零章：汇丰招聘全流程拆解（来自真实面经）
+
+> 来源：Glassdoor、牛客网、The Student Room、GraduatesFirst、eFinancialCareers 面经汇总（2023-2025）
+
+### 0.1 完整流程图
+
+```
+Step 1: 网申（Online Application）
+         ↓
+Step 2: OIA — Online Immersive Assessment（在线测评，约 38 题）
+         ├── 数字推理（16题，含图表计算、百分比增长、基础统计）
+         └── 情景判断 SJT（22题，对 HSBC 三大 Values 打分）
+         ↓
+Step 3: HireVue 视频面试（录制式，非实时）
+         ├── 3-4 道行为题，每题 30 秒准备 + 2-3 分钟作答
+         └── 不可重录，答完即提交
+         ↓
+Step 4: AC — Assessment Centre / Experience Day（半天到一天）
+         ├── 案例分析 + 演讲（30-60 分钟阅读资料，15 分钟演讲）
+         ├── 小组讨论（Group Exercise）
+         └── 一对一面试（Competency-based，1-2 位面试官）
+         ↓
+Step 5: Offer
+```
+
+**时间线参考**：整个流程平均约 **28 天**（从网申到 Offer）
+
+---
+
+### 0.2 Step 2: OIA 在线测评详解
+
+**数字推理部分（16题）：**
+- 题型：图表阅读（柱状图/折线图/表格）+ 百分比计算 + 增长率计算
+- 难度中等，纯英文题目，不限时但建议不要拖太久
+- 真实题型示例：
+  - *"Company A's revenue in Q3 was $2.4M, representing a 20% increase from Q2. What was Q2 revenue?"*（答案：$2M）
+  - *"If the proportion of international clients grew from 35% to 42%, what is the percentage point increase?"*（答案：7pp）
+- **备考建议**：去 [SHL 官网](https://www.shl.com) 或 [JobTestPrep](https://www.jobtestprep.co.uk) 刷数字推理练习题，重点练图表读数 + 比例计算
+
+**情景判断部分（22题）：**
+- 给出工作场景，列出 5 种应对方式，从 1（最可能这么做）到 5（最不可能）排序
+- 实际上是测你对 **HSBC 三大 Values** 的理解程度：
+  - **Dependable（可靠）**：兑现承诺、承担责任、在压力下保持稳定
+  - **Open（开放）**：倾听不同观点、勇于提出建议、拥抱多元视角
+  - **Connected（连接）**：构建跨团队关系、理解客户需求、为集体目标协作
+- 答题逻辑：每道题选最符合"负责任、主动沟通、以客户/团队为先"原则的选项
+
+---
+
+### 0.3 Step 3: HireVue 视频面试详解
+
+**格式**：录制式，无真人面试官，无法重录，每题 30 秒准备 + 2-3 分钟作答
+
+**真实题目（来源：Glassdoor + eFinancialCareers 面经，2023-2025 届）：**
+
+| # | 原题（英文） | 对应 Value |
+|---|------------|-----------|
+| 1 | Tell us about a time you demonstrated dependability under pressure. | Dependable |
+| 2 | Describe a situation where you were open to a different perspective and how it changed your approach. | Open |
+| 3 | Give an example of how you built connections across a team, organisation, or community. | Connected |
+| 4 | Why do you want to work at HSBC? | Motivation |
+| 5 | Tell me about a recent macro event and how it has impacted financial markets. | Technical |
+| 6 | Where would you like to travel, if you could? *(热身题，不评分，用于测试设备)* | Warmup |
+| 7 | Describe a time you had to manage multiple priorities simultaneously. | Dependable |
+| 8 | Tell me about a time you had to work with someone very different from yourself. | Open / Connected |
+
+> ⚠️ **关键注意**：汇丰面试官会对照 Values 评分表给你打分，每道行为题答完后**主动说出你展示的是哪个 Value**，比如："This experience shows my commitment to being dependable — I delivered under pressure while maintaining accuracy."
+
+**HireVue 作答技巧（来自面经总结）：**
+- 30 秒准备时间里迅速在脑子里过一遍 STAR 结构（不需要写下来）
+- 先说结论，再讲故事——不要一上来就铺背景
+- 汇丰喜欢一道题里问 2-3 个子问题（如"describe a time... AND what would you do differently"），注意每个子问题都要回答
+- 眼神看摄像头，不要看自己的视频画面
+- 语速稍慢，英文说清楚比说快更重要
+
+---
+
+### 0.4 Step 4: AC 评估中心详解
+
+**AC 通常包含三个环节（可能在同一天完成）：**
+
+**① 案例分析 + 演讲（Case Study Presentation）**
+- 时长：阅读资料 30-60 分钟 + 演讲 10-15 分钟 + Q&A 10-15 分钟
+- 资料：厚厚一沓英文材料（财务数据 + 业务背景 + 市场信息），信息量大、刻意加入干扰信息
+- 演讲内容：对案例公司/情境给出分析结论和建议
+- **演讲后 Q&A 是重点**：面试官会穷追猛打问财务细节（来源：真实面经描述），战略问题相对好回答，财务数字问题难度高
+- **你需要准备的框架**（见第七章 Case Study 5 新增）
+
+**② 小组讨论（Group Exercise）**
+- 4-6 人一组，讨论同一个情景/案例，无固定角色
+- 考察：是否能听取别人的观点（Open）、是否有领导力（Connected）、是否有逻辑（Dependable）
+- **常见错误**：只顾表达自己、打断别人、或完全沉默——要做到"有贡献 + 推动讨论进展"
+- **策略**：不需要主导全场，但至少在开头提出框架（"Shall we first agree on the criteria we're evaluating..."）和结尾总结（"So our key recommendation is..."）
+
+**③ 一对一面试（Individual Interview）**
+- 1-2 位面试官，25-40 分钟
+- 格式：Competency-based（行为题）+ 技术/专业题
+- 常见问题（真实面经汇总）：
+  - 英文自我介绍（3 分钟）
+  - Why HSBC / Why this role?（**必问**）
+  - Walk me through your most relevant experience.
+  - Tell me about a recent news/market event that caught your attention. Why?
+  - How do you ensure accuracy when handling large amounts of data?
+  - What do you know about HSBC's current strategy?
+
+---
+
+### 0.5 本次 JD 对应的流程研判
+
+由于本次 JD 是**部门自招的 Ad-hoc 实习**（非 GIP 正式校招），流程可能简化：
+
+| 环节 | GIP 校招 | Ad-hoc 自招（本次） |
+|------|---------|------------------|
+| OIA 在线测评 | 必有 | **可能简化或跳过** |
+| HireVue | 必有 | **可能跳过，直接进入真人面试** |
+| AC 评估中心 | 必有 | **可能简化为 1-2 轮视频/电话面试** |
+
+> **实际预期**：HR 电话/视频初筛（15-20 分钟） → 业务面（30-45 分钟，1 位 hiring manager）→ 可能有第二轮 → Offer。流程更接近一般互联网/咨询公司的实习招聘，没有完整 AC。
 
 ---
 
@@ -547,6 +668,68 @@ Executive Summary（1页）→ 核心结论+建议（忙碌的管理层只看这
 
 ---
 
+### Case Study 5：AC 案例分析演讲（真实场景模拟）
+
+**背景（基于真实面经描述）：**
+汇丰 AC 给你厚厚一沓英文材料，包含某公司/市场的背景信息、财务数据、战略挑战，你有 30-60 分钟阅读，然后做 10-15 分钟演讲，再接受 10-15 分钟 Q&A。
+
+**模拟题目：**
+> 你被给予以下材料：某东南亚零售银行（虚构）ConnectBank 的 2024 年报摘要。该行近年快速扩张，贷款组合增长 40%，但不良贷款率（NPL ratio）从 1.2% 上升至 3.8%，净利润下降 35%。该行正考虑三个战略选项：①收缩贷款规模、优化存量；②引入第三方数据（电商/电信数据）改善信贷评估；③与本地金融科技公司合并。请做 10 分钟演讲，给出你的战略建议。
+
+---
+
+**解题框架（阅读材料阶段要做的事）：**
+
+```
+阅读时间分配（假设 45 分钟）：
+├── 前 10 分钟：快速浏览所有材料，识别关键问题是什么
+├── 中 20 分钟：精读财务数据 + 各选项的 pros/cons 信息
+└── 后 15 分钟：写演讲提纲（纸上列要点，不写全稿）
+```
+
+**演讲结构（10 分钟）：**
+
+```
+1. 问题定义（1.5分钟）
+   "ConnectBank faces a core tension: growth has come at the cost of
+   credit quality. NPL rising from 1.2% to 3.8% signals that the current
+   underwriting model cannot support the loan book size. The strategic
+   question is: how to restore profitability without sacrificing
+   long-term growth potential?"
+
+2. 分析三个选项（5分钟）
+   Option A（收缩）：短期见效快，但放弃市场份额，竞争者可能趁虚而入
+   Option B（数据改善信贷）：中期见效，技术可行性需评估，监管合规风险
+   Option C（合并金融科技）：长期战略，整合风险高，耗时长，短期无法解决NPL问题
+
+3. 建议（2分钟）
+   "I recommend Option B as the primary path, complemented by selective
+   loan book optimization from Option A. Option C should be evaluated
+   as a long-term possibility but not pursued urgently."
+   → 给出 2-3 个具体实施步骤
+
+4. 风险与监控指标（1.5分钟）
+   关键风险 + 你会追踪哪些指标来衡量策略效果（NPL ratio / loan growth / NIM）
+```
+
+**Q&A 高频问题（面试官穷追猛打模式）：**
+
+> **Q：你推荐 Option B，但如果电商数据质量很差，信贷模型反而更不准确，怎么办？**
+>
+> "这是真实风险。缓解路径是：先在小规模（10-15% 的新增贷款申请）做 pilot，对比引入新数据前后的 approval rate 和 30 天逾期率，有统计显著性差异再扩大。同时对第三方数据供应商做合规尽职调查，确保数据获取方式符合当地隐私法规。"
+
+> **Q：NPL 从 1.2% 到 3.8% 意味着多大的财务损失？**
+>
+> "需要知道贷款总规模才能精确计算。如果贷款组合是 $10B，NPL 从 1.2% 到 3.8% 意味着不良贷款从 $120M 上升到 $380M，增加 $260M。按 50% 拨备覆盖率，需要额外计提 $130M 拨备，直接侵蚀利润。这解释了为什么净利润下降了 35%。"
+
+> **Q：你会如何量化 Option A 和 Option B 的成本收益？**
+>
+> "Option A 的量化：收缩 X% 贷款规模 → 减少 Y% NPL → 节省 Z 拨备 → 利润提升估算。代价：利息收入减少 + 市场份额损失的机会成本。Option B 的量化：技术投入成本（一次性 + 年度维护）vs. 信贷损失率改善带来的节省。做一个 3 年 NPV 分析，把两个方案的现金流折现比较。"
+
+> ⚠️ **面经警示**：真实面试中财务问题"穷追猛打"——面试官会不断追问你数字的来源和计算逻辑。准备好说"基于材料中的数据，我的估算是..."，如果材料没给某个数字，直接说"这需要补充信息，我会假设 X 来做估算"。
+
+---
+
 ## 第八章：Gap 分析 & 补强策略
 
 | Gap 点 | 优先级 | 补强话术 |
@@ -560,6 +743,64 @@ Executive Summary（1页）→ 核心结论+建议（忙碌的管理层只看这
 ---
 
 ## 第九章：HR 面专项准备
+
+### 9.0 HireVue 专项准备（如需录制视频面试）
+
+**三大 Values 对应题目 + 你的参考答案：**
+
+---
+
+**Value: Dependable（可靠）**
+> *"Tell us about a time you demonstrated dependability under pressure."*
+
+**参考答案框架（2分钟版）：**
+> "At Yobbi, a client brought forward their quarterly review meeting by two days, which meant I had to consolidate financial data from five clients — thousands of rows each — in half the time originally planned.
+>
+> Rather than panicking, I immediately assessed which parts of the process could be automated. I had Power Query templates for three clients already; I adapted them for the remaining two within an hour. I ran validation checks in parallel rather than sequentially, so I wasn't doing a full quality review at the very end.
+>
+> The report was delivered on time with zero errors flagged in the client review. What this showed me is that dependability under pressure isn't about working harder — it's about having systems in place before the pressure hits."
+>
+> *(Closing line — connect to Value explicitly)*: "I think this reflects what it means to be dependable: not just meeting the deadline, but maintaining the standard of work that people are counting on."
+
+---
+
+**Value: Open（开放）**
+> *"Describe a situation where you were open to a different perspective and how it changed your approach."*
+
+**参考答案框架：**
+> "At CyberSG, I had built a requirements prioritisation framework based purely on business impact versus implementation cost. I was confident in it. But when I presented it to the engineering lead, he pointed out that I hadn't factored in technical debt — certain 'low-cost' features actually required refactoring legacy code, which would slow down future work significantly.
+>
+> My initial reaction was defensive, but I sat with his feedback and realised he was right. I rebuilt the matrix with a third axis: downstream technical complexity. The final prioritisation was meaningfully different — two features I had ranked high dropped significantly.
+>
+> What changed in my approach: I now treat technical stakeholders as co-designers of prioritisation, not just implementers. Their constraints aren't obstacles — they're information."
+
+---
+
+**Value: Connected（连接）**
+> *"Give an example of how you built connections across a team, organisation, or community."*
+
+**参考答案框架：**
+> "At CyberSG, the product team and the engineering team were working in silos — product would write requirements, throw them over the fence, and only find out about problems during UAT. There was visible friction.
+>
+> I introduced a weekly 30-minute sync that included both sides. To make it worthwhile for engineers (who are usually resistant to extra meetings), I structured it as: 5 minutes on blockers, 10 minutes on upcoming requirements preview, 15 minutes open Q&A. Engineers could flag concerns before work started rather than after.
+>
+> Within two sprints, the number of requirements returned for clarification dropped noticeably. More importantly, the two teams started communicating informally — Slack messages before formal requests. That shift in relationship dynamic was more valuable than any single meeting."
+
+---
+
+**Technical HireVue Question:**
+> *"Tell me about a recent macro event and how it has impacted financial markets."*
+
+**参考答案（选一个你真正了解的事件）：**
+> "One event I've been following closely is the Federal Reserve's rate cycle — specifically the shift from aggressive hiking in 2022-2023 to the easing that began in late 2024.
+>
+> The impact on markets has been multidimensional. For fixed income, the anticipation of cuts drove a significant bond rally in late 2023, as prices moved inversely with yield expectations. For equities, lower rates improve DCF valuations, particularly for growth stocks with long-duration cash flows — which explains part of the tech sector rebound.
+>
+> For banks like HSBC specifically, the rate environment has a direct impact on net interest margin — the spread between what they earn on loans and what they pay on deposits. HSBC's NIM benefited from the high-rate period; as rates normalise, margin compression is a real concern, which is part of why the 2025 outlook guidance was more cautious.
+>
+> I think the interesting question now is the pace of cuts — if inflation proves stickier than expected, the 'higher for longer' scenario extends, which changes the calculus for leveraged borrowers and credit quality."
+
+---
 
 ### 9.1 汇丰 HR 面风格
 
